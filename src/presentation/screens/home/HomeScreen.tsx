@@ -5,27 +5,25 @@ import { useQuery } from "@tanstack/react-query"
 
 export const HomeScreen = () => {
   
-  const { isLoading, data } = useQuery({ 
+  const { isLoading, data = [] } = useQuery({ 
     queryKey: ['pokemons'], 
-    queryFn: () => getPokemons(),
+    queryFn: () => getPokemons(0),
     staleTime: 10000 * 60 * 60, 
   });
 
   return (
     <View style={ styles.container }>
         <Text variant="displaySmall">Home Screen</Text>
-
         {
-          isLoading ? (
-            <ActivityIndicator/>
-            ) : (
+          isLoading
+          ? ( <ActivityIndicator/> ) 
+          : (
               <Button mode="contained" 
                 onPress={() => console.log('Pressed')}>
                 Press me
               </Button>
-           )
-        }
-        
+            )
+        }        
     </View>
   )
 }
