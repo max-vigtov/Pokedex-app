@@ -4,6 +4,5 @@ export interface Pokemon{
     types: string[];
     avatar: string;
     sprites: string[];
-
-    //TODO: Color
+    color: string    
 }
