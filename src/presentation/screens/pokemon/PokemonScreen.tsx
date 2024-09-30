@@ -1,15 +1,15 @@
-import { FlatList, Image, ScrollView,  StyleSheet,  View } from "react-native"
-import { RootStackParams } from "../../navigator/StackNavigator"
-import { StackScreenProps } from "@react-navigation/stack"
-import { useQuery } from "@tanstack/react-query";
-import { getPokemonById } from "../../../actions/pokemons";
-import { FullScreenLoader } from "../../components/ui/FullScreenLoader";
-import { Chip, Text } from "react-native-paper";
-import { Formatter } from "../../../config/helpers/formatter";
-import { FadeInImage } from "../../components/ui/FadeInImage";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { useQuery } from "@tanstack/react-query";
 import { useContext } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
+import { StackScreenProps } from "@react-navigation/stack"
+import { RootStackParams } from "../../navigator/StackNavigator"
+import { getPokemonById } from "../../../actions/pokemons";
+import { FullScreenLoader } from "../../components/ui/FullScreenLoader";
+import { Formatter } from "../../../config/helpers/formatter";
+import { FlatList, Image, ScrollView,  StyleSheet,  View } from "react-native"
+import { FadeInImage } from "../../components/ui/FadeInImage";
+import { Chip, Text } from "react-native-paper";
 
 interface Props extends StackScreenProps<RootStackParams, 'PokemonScreen'> {}
 
@@ -68,27 +68,26 @@ export const PokemonScreen = ({ navigation, route }: Props) => {
             { type }
           </Chip>
         ) ) }
-  </View>
+      </View>
 
-  {/* Sprites */ }
-  <FlatList
-    data={ pokemon.sprites }
-    horizontal
-    keyExtractor={ item => item }
-    showsHorizontalScrollIndicator={ false }
-    centerContent
-    style={ {
-      marginTop: 20,
-      height: 100,
-    } }
-    renderItem={ ( { item } ) => (
-      <FadeInImage
-        uri={ item }
-        style={ { width: 100, height: 100, marginHorizontal: 5 } }
-      />
-    ) }
-  />
-
+    {/* Sprites */ }
+    <FlatList
+      data={ pokemon.sprites }
+      horizontal
+      keyExtractor={ item => item }
+      showsHorizontalScrollIndicator={ false }
+      centerContent
+      style={ {
+        marginTop: 20,
+        height: 100,
+      } }
+      renderItem={ ( { item } ) => (
+        <FadeInImage
+          uri={ item }
+          style={ { width: 100, height: 100, marginHorizontal: 5 } }
+        />
+      ) }
+    />
 
    {/* abilities */}
    <Text style={styles.subTitle}>Abilities</Text>
@@ -149,13 +148,11 @@ export const PokemonScreen = ({ navigation, route }: Props) => {
           <Chip selectedColor="white">{Formatter.capitalize(item)}</Chip>
         )}
       />
-
       <View style={{height: 100}} />
 </ScrollView>
 
   )
 }
-
 
 const styles = StyleSheet.create({
   headerContainer: {
